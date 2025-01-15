@@ -66,6 +66,9 @@ const categoryList = [
 ];
 
 function ListBox() {
+  const [selected, setSelected] = useState(dateList[0]);
+  const [selected2, setSelected2] = useState(categoryList[0]);
+
   const [isOpen, setIsOpen] = useState(false);
   const [isActive, SetIsActive] = useState(null);
   const [isActiveCategory, setIsActiveCategory] = useState(null);
@@ -80,7 +83,7 @@ function ListBox() {
 
   return (
     <div className="sm:flex flex-row gap-5 items-center hidden">
-      <Listbox>
+      <Listbox value={selected} onChange={setSelected}>
         <ListboxButton
           onClick={() => {
             setIsOpen(!isOpen);
@@ -92,7 +95,7 @@ function ListBox() {
               <img src="/calender.png" alt="icon" />
             </div>
             <Text variant="primary" style={{ color: "#ffffff" }}>
-              Select a Date
+              {selected.date}
             </Text>
           </div>
           <div className="flex items-center justify-center h-5 w-5">
@@ -108,6 +111,7 @@ function ListBox() {
             <ListboxOption
               item={item}
               key={item.id}
+              value={item}
               onClick={() => handleActive(index)}
               className={`flex flex-row py-1 pl-4 pr-6 gap-4 items-center h-12 focus:bg-[#282043] hover:bg-[#282043] ${
                 isActive === index ? "bg-[#282043]" : "bg-[#332e59]"
@@ -131,7 +135,7 @@ function ListBox() {
         </ListboxOptions>
       </Listbox>
 
-      <Listbox>
+      <Listbox value={selected2} onChange={setSelected2}>
         <ListboxButton
           onClick={() => {
             setIsOpen(!isOpen);
@@ -143,7 +147,7 @@ function ListBox() {
               <img src="/chart_bar_fill.png" alt="icon" />
             </div>
             <Text variant="primary" style={{ color: "#ffffff" }}>
-              Category
+              {selected2.category}
             </Text>
           </div>
           <div className="flex items-center justify-center h-5 w-5">

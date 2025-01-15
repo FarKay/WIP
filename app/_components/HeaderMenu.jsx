@@ -1,4 +1,6 @@
-import Date from "./Date";
+"use client";
+
+import DatePickerComponent from "./DatePickerComponent";
 import Heading from "./Heading";
 
 function HeaderMenu() {
@@ -12,7 +14,7 @@ function HeaderMenu() {
           <Heading tag="primary">Dashboard</Heading>
         </div>
       </div>
-      <Date />
+      <DatePickerComponent />
     </div>
   );
 }
