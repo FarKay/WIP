@@ -67,7 +67,10 @@ const categoryList = [
 
 function ListBox() {
   const [selected, setSelected] = useState(dateList[0]);
-  const [selected2, setSelected2] = useState(categoryList[0]);
+  const [selectedCategory, setSelectedCatergory] = useState(categoryList[0]);
+
+  // console.log(selected, "selected");
+  // console.log(selectedCategory, "selectedCategory");
 
   const [isOpen, setIsOpen] = useState(false);
   const [isActive, SetIsActive] = useState(null);
@@ -135,7 +138,7 @@ function ListBox() {
         </ListboxOptions>
       </Listbox>
 
-      <Listbox value={selected2} onChange={setSelected2}>
+      <Listbox value={selectedCategory} onChange={setSelectedCatergory}>
         <ListboxButton
           onClick={() => {
             setIsOpen(!isOpen);
@@ -147,7 +150,7 @@ function ListBox() {
               <img src="/chart_bar_fill.png" alt="icon" />
             </div>
             <Text variant="primary" style={{ color: "#ffffff" }}>
-              {selected2.category}
+              {selectedCategory.category}
             </Text>
           </div>
           <div className="flex items-center justify-center h-5 w-5">
@@ -163,6 +166,7 @@ function ListBox() {
             <ListboxOption
               item={item}
               key={item.id}
+              value={item}
               onClick={() => handleActiveCategory(index)}
               className={`flex flex-row py-1 pl-4 pr-6 gap-4 items-center h-12 focus:bg-[#282043] hover:bg-[#282043] ${
                 isActiveCategory === index ? "bg-[#282043]" : "bg-[#332e59]"
